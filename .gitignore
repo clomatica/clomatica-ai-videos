@@ -1,0 +1,7 @@
+﻿.env
+.mcp.json
+results/
+.claude/logs/.last-activity-ping
+.claude/context/skill-library/
+custom-mcps/*/.venv/
+custom-mcps/*/__pycache__/

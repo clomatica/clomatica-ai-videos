@@ -1,0 +1,8 @@
+[project]
+name = "mcp-recorder"
+version = "0.1.0"
+description = "Record a webapp's network traffic while the user drives the browser, to reverse-engineer endpoints for a custom MCP."
+requires-python = ">=3.11"
+dependencies = [
+    "playwright>=1.49",
+]

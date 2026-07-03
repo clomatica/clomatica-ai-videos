@@ -1,0 +1,16 @@
+[project]
+name = "{{MCP_SERVER_NAME}}-mcp"
+version = "0.1.0"
+description = "{{SHORT_DESCRIPTION}}"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp[cli]>=1.2.0",
+    "httpx>=0.27",
+]
+
+# Add extra dependencies as needed, e.g.:
+# dependencies = [
+#     "mcp[cli]>=1.2.0",
+#     "httpx>=0.27",
+#     "some-sdk>=1.0",  # for specific service SDKs
+# ]

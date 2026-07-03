@@ -1,0 +1,56 @@
+{
+  "_description": "Ready-to-use MCP entries for all pre-built custom integrations. During /setup, add relevant entries to the client's .mcp.example.json based on the tools they use. The client copies what they need to .mcp.json and fills in real credentials.",
+
+  "brightdata": {
+    "command": "uv",
+    "args": ["run", "--directory", "custom-mcps/brightdata", "server.py"],
+    "env": {
+      "BRIGHTDATA_API_TOKEN": "your-brightdata-api-token"
+    }
+  },
+
+  "fal": {
+    "command": "uv",
+    "args": ["run", "--directory", "custom-mcps/fal", "server.py"],
+    "env": {
+      "FAL_KEY": "your-fal-api-key"
+    }
+  },
+
+  "granola": {
+    "command": "uv",
+    "args": ["run", "--directory", "custom-mcps/granola", "server.py"],
+    "env": {
+      "GRANOLA_API_KEY": "your-granola-api-key"
+    }
+  },
+
+  "manychat": {
+    "command": "uv",
+    "args": ["run", "--directory", "custom-mcps/manychat", "server.py"],
+    "env": {
+      "MANYCHAT_API_TOKEN": "your-manychat-api-token"
+    }
+  },
+
+  "odoo": {
+    "command": "uv",
+    "args": ["run", "--directory", "custom-mcps/odoo", "server.py"],
+    "env": {
+      "ODOO_URL": "https://your-instance.odoo.com",
+      "ODOO_DB": "your-database-name",
+      "ODOO_USER": "your-email@example.com",
+      "ODOO_API_KEY": "your-odoo-api-key"
+    }
+  },
+
+  "resourcespace": {
+    "command": "uv",
+    "args": ["run", "--directory", "custom-mcps/resourcespace", "server.py"],
+    "env": {
+      "RESOURCESPACE_URL": "https://your-instance.example.com",
+      "RESOURCESPACE_USER": "your-api-username",
+      "RESOURCESPACE_API_KEY": "your-private-api-key"
+    }
+  }
+}

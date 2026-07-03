@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "brightdata": {
+      "command": "uv",
+      "args": ["run", "--directory", "custom-mcps/brightdata", "server.py"],
+      "env": {
+        "BRIGHTDATA_API_TOKEN": "your-brightdata-api-token"
+      }
+    }
+  }
+}
