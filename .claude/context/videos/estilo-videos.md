@@ -6,6 +6,8 @@ Cuenta de Instagram y TikTok de **videos cortos animados con estética minimalis
 
 Los personajes viven en carpetas propias: ver [personajes/coco/](personajes/coco/) y [personajes/luna/](personajes/luna/).
 
+Cómo monetiza este estilo de contenido (plataformas + modelos de negocio): ver [../business-model/informe-monetizacion.md](../business-model/informe-monetizacion.md).
+
 ---
 
 ## Concepto de cada video

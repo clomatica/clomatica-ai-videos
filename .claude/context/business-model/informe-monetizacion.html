@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo ganan plata los videitos estilo Coco & Luna</title>
+<style>
+  :root {
+    --bg: #f7f2ea;
+    --card: #fffdf9;
+    --ink: #2e2823;
+    --muted: #6f645a;
+    --line: #e6dccd;
+    --terra: #c06a45;
+    --terra-soft: #f0dcd0;
+    --cacao: #6b4a37;
+    --stone: #9a8d7d;
+    --ok: #5b7d5b;
+    --warn: #b9762e;
+    --danger: #b1503f;
+    --accent-bg: #f3e7dc;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1815;
+      --card: #262019;
+      --ink: #eee6da;
+      --muted: #a89a8a;
+      --line: #3a322a;
+      --terra: #d98a63;
+      --terra-soft: #3d2c22;
+      --cacao: #d8b79c;
+      --stone: #8f8272;
+      --ok: #8fb28f;
+      --warn: #d99a52;
+      --danger: #d9836f;
+      --accent-bg: #2e251d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1c1815; --card: #262019; --ink: #eee6da; --muted: #a89a8a; --line: #3a322a;
+    --terra: #d98a63; --terra-soft: #3d2c22; --cacao: #d8b79c; --stone: #8f8272;
+    --ok: #8fb28f; --warn: #d99a52; --danger: #d9836f; --accent-bg: #2e251d;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f2ea; --card: #fffdf9; --ink: #2e2823; --muted: #6f645a; --line: #e6dccd;
+    --terra: #c06a45; --terra-soft: #f0dcd0; --cacao: #6b4a37; --stone: #9a8d7d;
+    --ok: #5b7d5b; --warn: #b9762e; --danger: #b1503f; --accent-bg: #f3e7dc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 48px 24px 96px; }
+  header.hero {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 28px;
+    margin-bottom: 8px;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: 12px;
+    color: var(--terra);
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.15;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+  .sub { color: var(--muted); font-size: 15px; margin: 0; }
+  .tldr {
+    background: var(--terra-soft);
+    border-left: 4px solid var(--terra);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 32px 0;
+    font-size: 15.5px;
+  }
+  .tldr strong { color: var(--cacao); }
+  h2 {
+    font-size: 22px;
+    margin: 52px 0 6px;
+    letter-spacing: -0.01em;
+  }
+  h2 .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--terra); color: #fff; font-size: 15px; font-weight: 700;
+    margin-right: 10px; vertical-align: middle;
+  }
+  h3 { font-size: 16px; margin: 28px 0 8px; color: var(--cacao); }
+  p { margin: 12px 0; }
+  a { color: var(--terra); }
+  .section-lead { color: var(--muted); margin-top: 6px; }
+  .table-scroll { overflow-x: auto; margin: 22px 0; border-radius: 12px; border: 1px solid var(--line); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 620px; background: var(--card); }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { background: var(--accent-bg); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+  tbody tr:last-child td { border-bottom: none; }
+  .rpm { font-weight: 700; color: var(--terra); white-space: nowrap; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 22px 0; }
+  .stat {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px;
+  }
+  .stat .big { font-size: 26px; font-weight: 800; color: var(--terra); line-height: 1.1; }
+  .stat .lbl { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .callout {
+    border-radius: 12px; padding: 16px 18px; margin: 22px 0; font-size: 14.5px;
+    background: var(--card); border: 1px solid var(--line);
+  }
+  .callout.lever { border-left: 4px solid var(--ok); }
+  .callout.warn { border-left: 4px solid var(--warn); }
+  .callout .tag { font-weight: 700; display: block; margin-bottom: 4px; }
+  .callout.lever .tag { color: var(--ok); }
+  .callout.warn .tag { color: var(--warn); }
+  .pill { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 20px; vertical-align: middle; }
+  .pill.solid { background: var(--ok); color: #fff; }
+  .pill.maybe { background: var(--accent-bg); color: var(--warn); border: 1px solid var(--warn); }
+  ul { padding-left: 20px; }
+  li { margin: 7px 0; }
+  ol.path { counter-reset: step; list-style: none; padding: 0; margin: 20px 0; }
+  ol.path li {
+    counter-increment: step; position: relative; padding: 14px 16px 14px 56px; margin: 10px 0;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  }
+  ol.path li::before {
+    content: counter(step); position: absolute; left: 14px; top: 14px;
+    width: 28px; height: 28px; border-radius: 50%; background: var(--cacao); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;
+  }
+  .tier { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+  .tier > div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+  .tier h4 { margin: 0 0 8px; font-size: 15px; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 48px 0; }
+  .fine { font-size: 13.5px; color: var(--muted); }
+  .fine li { margin: 5px 0; }
+  footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--stone); }
+  .method { background: var(--accent-bg); border-radius: 12px; padding: 14px 18px; font-size: 13px; color: var(--muted); margin-top: 20px; }
+  @media (max-width: 560px) { .tier { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Clomatica · Business Model · Deep Research</p>
+    <h1>Cómo ganan plata los videitos estilo Coco&nbsp;&amp;&nbsp;Luna</h1>
+    <p class="sub">Monetización y modelos de negocio para una IP de personajes animados AI (cozy animal-couple ASMR) en Instagram, TikTok y YouTube. · Act. 2026-07-03</p>
+  </header>
+
+  <div class="tldr">
+    <strong>TL;DR estratégico:</strong> la plata de las plataformas (los "creator programs") es <strong>estructuralmente chica y poco confiable</strong> para este formato. El corto ASMR sin diálogo es justo el peor caso para monetización directa. La plata de verdad para una IP de personajes está <strong>fuera de la plataforma</strong>: marca / merch / licensing. El caso a copiar es <strong>Line Friends</strong> — nacieron como stickers de una pareja animal tierna sin diálogo y hoy son un negocio global de IP.
+  </div>
+
+  <h2><span class="num">1</span>Monetización directa por plataforma</h2>
+  <p class="section-lead">Lo que pagan de verdad los programas de cada plataforma, con requisitos 2025–2026.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Plataforma</th><th>Programa</th><th>RPM /1.000 views</th><th>Requisito de entrada</th><th>Traba para nuestro formato</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>YouTube Shorts</strong></td>
+          <td>Shorts revenue sharing</td>
+          <td class="rpm">$0,01–$0,13</td>
+          <td>1.000 subs + (4.000 hs watch time/12 meses <em>o</em> 10M views Shorts/90 días)</td>
+          <td>Entretenimiento/animal/ASMR cae en la punta baja del RPM. Pool compartido, te toca 45% tras descontar música.</td>
+        </tr>
+        <tr>
+          <td><strong>TikTok</strong></td>
+          <td>Creator Rewards Program</td>
+          <td class="rpm">$0,40–$1,00+</td>
+          <td>18+, 10.000 seguidores, 100.000 views/30 días</td>
+          <td>⚠️ <strong>Solo paga videos de +1 minuto.</strong> Un ASMR corto de 15–40s no cobra nada.</td>
+        </tr>
+        <tr>
+          <td><strong>Instagram Reels</strong></td>
+          <td>Bonuses / Breakthrough</td>
+          <td class="rpm">$0,01–$0,12</td>
+          <td>Solo por invitación (cerrado a nuevos en muchos mercados)</td>
+          <td>No se puede planificar. El Breakthrough Bonus llega a ~$1.000–$3.000/mes pero es invite-only.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cards">
+    <div class="stat"><div class="big">$80–$200</div><div class="lbl">/mes en TikTok con 100K seguidores y 200K views/mes (y solo si hacés +1 min)</div></div>
+    <div class="stat"><div class="big">10–50M</div><div class="lbl">views/mes que necesita un canal AI Shorts para sacar ~$200–$2.000/mes</div></div>
+    <div class="stat"><div class="big">&lt;20%</div><div class="lbl">del ingreso total de un creador pro viene de pagos de plataforma</div></div>
+  </div>
+
+  <p><strong>Conclusión:</strong> los pagos de plataforma no son el negocio, son la propina. Y nuestro formato (corto + sin diálogo) tropieza con las dos peores trabas: el mínimo de 1 minuto de TikTok y el RPM bajo de entretenimiento en YouTube.</p>
+
+  <div class="callout lever">
+    <span class="tag">🎯 Palanca concreta para Coco &amp; Luna</span>
+    Hacer <strong>cortes de +60s</strong> (loops ASMR extendidos, compilados de "un día de Coco &amp; Luna") desbloquea el único RPM decente que existe (TikTok, $0,40–$1,00). Es la diferencia entre cobrar $0 y cobrar algo.
+  </div>
+
+  <h2><span class="num">2</span>Modelos de negocio alternativos</h2>
+  <p class="section-lead">Acá está la plata real. Se separa lo verificado de lo plausible-sin-dato-firme (la research refutó 6 claims de blogs con números inflados).</p>
+
+  <h3><span class="pill solid">Verificado</span> &nbsp;El camino sticker → IP</h3>
+  <p><strong>Line Friends</strong> arrancó en 2011 como stickers de chat: Brown (oso) y Cony (coneja), una pareja animal en situaciones cotidianas tiernas, sin diálogo — literalmente Coco &amp; Luna. En 2015 lanzaron el negocio de IP y hoy monetizan por <strong>tres canales combinados: tiendas físicas, contenido digital y licensing</strong>, con locales en ~18 mercados. Es la hoja de ruta.</p>
+
+  <h3><span class="pill solid">Verificado</span> &nbsp;Brand deals / colaboraciones</h3>
+  <p>Son la porción mayoritaria del ingreso de los creadores profesionales (~59–70% en varios datasets). Las cuentas de mascotas monetizan sobre todo con <strong>marcas del rubro</strong> (pet-care, hogar, bienestar): ej. cuentas de gatos que trabajan con Fresh Step, Molekule, Levoit.</p>
+
+  <h3><span class="pill maybe">Plausible</span> &nbsp;Estándar de la industria (sin cifra verificada para AI-characters)</h3>
+  <ul>
+    <li><strong>Merch / print-on-demand:</strong> márgenes típicos 20–40%. Requiere audiencia con apego, no solo views.</li>
+    <li><strong>Peluches:</strong> el mercado de peluche con licencia es enorme (~35–40% de las ventas globales). Royalty al dueño de la IP de <strong>8–15% del valor mayorista</strong>. Producto natural para una pareja de perritos tiernos.</li>
+    <li><strong>Licensing de IP:</strong> el <em>character licensing</em> mueve ~$130B/año (43% del mercado global). Categorías clásicas: juguetes, ropa, <strong>editoriales (libros infantiles)</strong>, juegos.</li>
+    <li><strong>Patreon, afiliados, venta de presets/prompts/cursos:</strong> existen, pero los números que circulan ("$7.500/mes con prompt packs", "$10K–$100K por deal de licensing AI") <strong>no se pudieron verificar</strong>. Upside especulativo, no plan.</li>
+  </ul>
+
+  <div class="callout warn">
+    <span class="tag">⚠️ Honestidad importante</span>
+    La investigación <strong>no encontró ni una sola cuenta real de "AI animal-couple ASMR" con ingresos públicos verificados</strong>. El nicho es tan nuevo que toda la evidencia es por analogía (Line Friends, cuentas de mascotas reales, canales faceless). Nadie tiene todavía el número "Coco &amp; Luna gana $X".
+  </div>
+
+  <h2><span class="num">3</span>Qué es realista según el tamaño</h2>
+
+  <div class="tier">
+    <div>
+      <h4>Cuenta chica (&lt; ~50–100K)</h4>
+      <p style="margin:6px 0;font-size:14px;">De plataforma: casi nada ($0–$50/mes). No contar con esto.</p>
+      <p style="margin:6px 0;font-size:14px;color:var(--muted);">Realista: construir el <strong>apego a los personajes</strong> y el catálogo. Todavía no se monetiza; se junta la audiencia que después compra.</p>
+    </div>
+    <div>
+      <h4>Cuenta mediana/grande</h4>
+      <p style="margin:6px 0;font-size:14px;">De plataforma: cientos a un par de miles/mes (si se adapta el formato).</p>
+      <p style="margin:6px 0;font-size:14px;color:var(--muted);">Realista y rentable: <strong>brand deals recurrentes</strong> + <strong>primer producto propio</strong> (arrancar digital/barato: sticker packs, wallpapers; después peluche/libro con licencia).</p>
+    </div>
+  </div>
+
+  <h3>El camino más rentable para una IP de personajes AI</h3>
+  <ol class="path">
+    <li><strong>Apego primero.</strong> Nombre, mundo, consistencia (ya definido con Coco &amp; Luna). Es el activo que todo lo demás monetiza.</li>
+    <li><strong>Formato dual.</strong> Mantener el corto ASMR para alcance, pero producir también +60s para tocar el único RPM decente (TikTok).</li>
+    <li><strong>Stickers / digital.</strong> Primer ingreso de bajo costo (modelo Line Friends de entrada).</li>
+    <li><strong>Brand deals.</strong> Del rubro cozy/hogar/pet/bienestar en cuanto haya engagement — no hace falta ser gigante.</li>
+    <li><strong>Merch físico → peluche → libro infantil.</strong> Cuando la comunidad tenga apego probado (royalty 8–15% si se licencia en vez de producir).</li>
+  </ol>
+
+  <hr>
+
+  <h2 style="margin-top:0">Advertencias sobre la evidencia</h2>
+  <ul class="fine">
+    <li>Todos los RPM y programas son foto <strong>2025–2026</strong> y cambian seguido (el Reels Play Bonus ya se discontinuó para nuevos; el Creator Fund se volvió Creator Rewards).</li>
+    <li>Las cifras de RPM de TikTok/YouTube son <strong>estimaciones reportadas por creadores</strong>, no tarifas oficiales.</li>
+    <li>Lo más firme (mecánica de plataformas, requisitos, caso Line Friends) viene de fuentes primarias. Los dólares de modelos alternativos son de blogs, solo parcialmente corroborados.</li>
+    <li><strong>6 claims fueron refutados y excluidos:</strong> RPM de Shorts de "$1–3", "$7.500/mes con prompt packs", "$10K–$100K por deal de licensing AI-character", entre otros.</li>
+  </ul>
+
+  <h3>Preguntas abiertas (próxima investigación)</h3>
+  <ul class="fine">
+    <li>¿Cuánto gana de verdad una cuenta análoga a Coco &amp; Luna y de qué stream exacto?</li>
+    <li>Cifras y estructura real de deals para merch/POD, peluches, libros infantiles, Patreon y sticker packs licenciados.</li>
+    <li>¿A qué tamaño de audiencia conviene lanzar producto propio vs. seguir dependiendo de plataforma?</li>
+    <li>¿Cómo aplican las tarifas de brand deal a cuentas faceless/sin diálogo (que no pueden hacer sponsorship con cara)?</li>
+  </ul>
+
+  <div class="method">
+    <strong>Método:</strong> deep research con fan-out de búsquedas web, extracción de claims y verificación adversarial (3 votos por claim; se descartan los que reciben 2/3 de refutación). 20 fuentes, 90 claims extraídos, 25 verificados → 19 confirmados, 6 refutados.
+  </div>
+
+  <footer>
+    <strong>Fuentes principales:</strong> YouTube Help · TikTok Creator Academy · Instagram Help Center · Line Friends (about) · License Global · Gigapay · Mediacube · Zebracat · Conbersa.<br>
+    Clomatica — AI Workspace · Documento de contexto interno.
+  </footer>
+
+</div>
+</body>
+</html>
