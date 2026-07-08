@@ -5,3 +5,6 @@ results/
 .claude/context/skill-library/
 custom-mcps/*/.venv/
 custom-mcps/*/__pycache__/
+
+# macOS
+.DS_Store

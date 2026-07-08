@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouTube long-form: RPM por vertical + estrategia</title>
+<style>
+  :root {
+    --bg: #f7f2ea; --card: #fffdf9; --ink: #2e2823; --muted: #6f645a; --line: #e6dccd;
+    --brand: #c23b2e; --brand-soft: #f4dcd7; --cacao: #6b4a37; --stone: #9a8d7d;
+    --ok: #5b7d5b; --warn: #b9762e; --danger: #b1503f; --accent-bg: #f3e7dc;
+    --gold: #c99a2e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1815; --card: #262019; --ink: #eee6da; --muted: #a89a8a; --line: #3a322a;
+      --brand: #e5685a; --brand-soft: #3d241f; --cacao: #d8b79c; --stone: #8f8272;
+      --ok: #8fb28f; --warn: #d99a52; --danger: #d9836f; --accent-bg: #2e251d; --gold: #d9b45a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1c1815; --card: #262019; --ink: #eee6da; --muted: #a89a8a; --line: #3a322a;
+    --brand: #e5685a; --brand-soft: #3d241f; --cacao: #d8b79c; --stone: #8f8272;
+    --ok: #8fb28f; --warn: #d99a52; --danger: #d9836f; --accent-bg: #2e251d; --gold: #d9b45a;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f2ea; --card: #fffdf9; --ink: #2e2823; --muted: #6f645a; --line: #e6dccd;
+    --brand: #c23b2e; --brand-soft: #f4dcd7; --cacao: #6b4a37; --stone: #9a8d7d;
+    --ok: #5b7d5b; --warn: #b9762e; --danger: #b1503f; --accent-bg: #f3e7dc; --gold: #c99a2e;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 48px 24px 96px; }
+  header.hero { border-bottom: 1px solid var(--line); padding-bottom: 28px; margin-bottom: 8px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 12px; color: var(--brand); font-weight: 700; margin: 0 0 10px; }
+  h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); font-size: 15px; margin: 0; }
+  .tldr { background: var(--brand-soft); border-left: 4px solid var(--brand); border-radius: 12px; padding: 18px 20px; margin: 32px 0; font-size: 15.5px; }
+  .tldr strong { color: var(--brand); }
+  h2 { font-size: 22px; margin: 52px 0 6px; letter-spacing: -0.01em; }
+  h2 .num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--brand); color: #fff; font-size: 15px; font-weight: 700; margin-right: 10px; vertical-align: middle; }
+  h3 { font-size: 16px; margin: 28px 0 8px; color: var(--cacao); }
+  p { margin: 12px 0; }
+  a { color: var(--brand); }
+  .section-lead { color: var(--muted); margin-top: 6px; }
+  .note { font-size: 13px; color: var(--muted); }
+  .table-scroll { overflow-x: auto; margin: 22px 0; border-radius: 12px; border: 1px solid var(--line); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; background: var(--card); }
+  th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { background: var(--accent-bg); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+  tbody tr:last-child td { border-bottom: none; }
+  .rpm { font-weight: 700; color: var(--brand); white-space: nowrap; }
+  .row-top { background: linear-gradient(90deg, var(--brand-soft), transparent); }
+  .row-floor td { color: var(--danger); }
+  .conf { font-size: 12px; color: var(--muted); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 22px 0; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+  .stat .big { font-size: 26px; font-weight: 800; color: var(--brand); line-height: 1.1; }
+  .stat .lbl { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .callout { border-radius: 12px; padding: 16px 18px; margin: 22px 0; font-size: 14.5px; background: var(--card); border: 1px solid var(--line); }
+  .callout.lever { border-left: 4px solid var(--ok); }
+  .callout.warn { border-left: 4px solid var(--warn); }
+  .callout.danger { border-left: 4px solid var(--danger); }
+  .callout .tag { font-weight: 700; display: block; margin-bottom: 4px; }
+  .callout.lever .tag { color: var(--ok); }
+  .callout.warn .tag { color: var(--warn); }
+  .callout.danger .tag { color: var(--danger); }
+  .flags { display: grid; gap: 8px; margin: 16px 0; }
+  .flag { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+  .flag .ic { font-size: 16px; line-height: 1.4; }
+  ul { padding-left: 20px; } li { margin: 7px 0; }
+  ol.path { counter-reset: step; list-style: none; padding: 0; margin: 20px 0; }
+  ol.path li { counter-increment: step; position: relative; padding: 14px 16px 14px 56px; margin: 10px 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+  ol.path li::before { content: counter(step); position: absolute; left: 14px; top: 14px; width: 28px; height: 28px; border-radius: 50%; background: var(--brand); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 48px 0; }
+  .fine { font-size: 13.5px; color: var(--muted); } .fine li { margin: 5px 0; }
+  footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--stone); }
+  .method { background: var(--accent-bg); border-radius: 12px; padding: 14px 18px; font-size: 13px; color: var(--muted); margin-top: 20px; }
+  .backlink { display:inline-block; margin-top: 10px; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Clomatica · Business Model · Deep Research</p>
+    <h1>YouTube long-form: RPM por vertical + estrategia</h1>
+    <p class="sub">Monetización en YouTube largo (con Shorts derivados) para contenido AI-generado. · Act. 2026-07-08</p>
+  </header>
+
+  <div class="tldr">
+    <strong>TL;DR estratégico:</strong> el pivot a YouTube long-form cambia la ecuación (el RPM del video largo es 30–100x el de Shorts). La plata está en: <strong>explicar IA para adultos, en inglés, en videos de 10–15 min</strong>, en <strong>un canal enfocado</strong> (no red de clones). Kids no monetiza (COPPA). Multi-canal clonado es riesgoso — las políticas "inauthentic/reused" apuntan justo al contenido AI a escala.
+  </div>
+
+  <div class="callout">
+    <span class="tag">📐 CPM vs RPM</span>
+    <strong>CPM</strong> = lo que paga el anunciante por 1.000 impresiones de aviso (el número "grande" de los blogs). <strong>RPM</strong> = lo que <strong>vos cobrás de verdad</strong> por 1.000 views del video, ya descontado el 45% de YouTube y las views sin aviso. <strong>El RPM es el que importa</strong> — suele ser ~40–50% del CPM.
+  </div>
+
+  <h2><span class="num">1</span>RPM/CPM por vertical <span style="font-size:14px;color:var(--muted);font-weight:400;">(inglés, audiencia Tier-1)</span></h2>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Vertical / tema</th><th>CPM (anunciante)</th><th>RPM (vos cobrás)</th><th>Conf.</th></tr>
+      </thead>
+      <tbody>
+        <tr class="row-top"><td><strong>Finanzas / Inversión</strong> 🥇</td><td>$15–50</td><td class="rpm">~$5–17</td><td class="conf">Alta</td></tr>
+        <tr><td>Make Money Online</td><td>$15–20</td><td class="rpm">~$6–10</td><td class="conf">Alta</td></tr>
+        <tr class="row-top"><td><strong>AI / Emerging Tech</strong> (explicar IA)</td><td>$10–25</td><td class="rpm">~$4–10</td><td class="conf">Media</td></tr>
+        <tr><td>Tech empresarial / dev / SaaS</td><td>$20–30</td><td class="rpm">~$8–12</td><td class="conf">Media</td></tr>
+        <tr class="row-top"><td><strong>Educación</strong> (adultos)</td><td>$8–25</td><td class="rpm">~$10 *</td><td class="conf">Alta</td></tr>
+        <tr><td>Negocios / Marketing</td><td>$10–20</td><td class="rpm">~$5–9</td><td class="conf">Media</td></tr>
+        <tr><td>Salud / Fitness</td><td>$7–20</td><td class="rpm">~$4–8</td><td class="conf">Media</td></tr>
+        <tr><td>Tech de consumo (reviews)</td><td>$5–12</td><td class="rpm">~$2–5</td><td class="conf">Media</td></tr>
+        <tr><td>Gaming</td><td>$4–15</td><td class="rpm">~$3–6</td><td class="conf">Alta</td></tr>
+        <tr><td>Entretenimiento</td><td>$3–6</td><td class="rpm">~$2–4</td><td class="conf">Alta</td></tr>
+        <tr><td>Música</td><td>~$1,36</td><td class="rpm">~$1</td><td class="conf">Media</td></tr>
+        <tr class="row-floor"><td><strong>Kids / "made for kids"</strong> 🚫</td><td>~$1,59</td><td class="rpm" style="color:var(--danger)">~$0,33</td><td class="conf">Alta (primaria)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">* Dato con mejor respaldo (estudio AIR sobre ~300 canales con YouTube Analytics real): RPM mediana ~$10, la <strong>mejor tasa de monetización del estudio (77% de views sirven aviso)</strong>. Pero es el nicho de mayor dispersión: cuartil alto $19,50 vs bajo $2,31.</p>
+
+  <div class="callout lever">
+    <span class="tag">🎯 Mejor cruce para Clomatica</span>
+    Educación explicando <strong>IA para adultos</strong> = CPM alto de tech/educación ($10–25) + demanda creciente ("AI es de las categorías de mayor crecimiento 2026"). De lo más rentable que se puede hacer.
+  </div>
+
+  <h2><span class="num">2</span>El problema de KIDS es estructural</h2>
+  <p class="section-lead">El hallazgo más sólido del research (paper peer-reviewed + docs oficiales de Google).</p>
+
+  <div class="cards">
+    <div class="stat"><div class="big">~$0,33</div><div class="lbl">RPM de contenido "made for kids" — ≈ 1/30 de Educación adultos</div></div>
+    <div class="stat"><div class="big">−73%</div><div class="lbl">cayeron los precios de aviso en canales infantiles tras el acuerdo COPPA de YouTube</div></div>
+    <div class="stat"><div class="big">Sin datos</div><div class="lbl">kids pierde memberships, Super Chat, comentarios y datos de audiencia</div></div>
+  </div>
+
+  <div class="callout danger">
+    <span class="tag">🚫 Implicación directa</span>
+    "El mismo video para nenes de 5" es justo la <strong>peor casilla de monetización</strong>. Bajo COPPA no se pueden servir avisos personalizados (solo contextuales) y el techo <strong>no se puede subir</strong> — solo compensar con volumen masivo. Kids sirve para alcance/branding, no para AdSense.
+  </div>
+
+  <h2><span class="num">3</span>Multi-canal (mismo tema, distintas audiencias): cuidado</h2>
+  <p class="section-lead">Segmentar es buen instinto, pero el contenido AI a escala es justo el caso que apuntan dos políticas oficiales:</p>
+
+  <div class="flags">
+    <div class="flag"><span class="ic">📋</span><div><strong>"Reused content":</strong> repurposing sin aporte original significativo. <strong>Aplica al canal ENTERO</strong> → pueden desmonetizar todo el canal, no un video.</div></div>
+    <div class="flag"><span class="ic">🤖</span><div><strong>"Inauthentic content"</strong> (renombrada 15-jul-2025): prohíbe contenido "con plantilla, poca o nula variación entre videos" y "fácilmente replicable a escala". La sustancia de cada video debe variar materialmente.</div></div>
+  </div>
+
+  <div class="flags">
+    <div class="flag"><span class="ic">✅</span><div><strong>Traducir/doblar</strong> el mismo video → función <strong>multi-audio en UN solo canal</strong> (no canales separados). Es lo que YouTube quiere.</div></div>
+    <div class="flag"><span class="ic">⚠️</span><div><strong>Mismo tema casi idéntico en canales distintos</strong> → patrón "replicable a escala" = riesgo alto de desmonetización.</div></div>
+    <div class="flag"><span class="ic">✅</span><div><strong>Versiones materialmente distintas</strong> por audiencia → aceptable, pero es <em>más</em> trabajo, no menos.</div></div>
+  </div>
+
+  <div class="callout lever">
+    <span class="tag">Veredicto</span>
+    Para arrancar, <strong>un canal en inglés</strong> enfocado y bien hecho &gt; red de multi-canales clonados. El multi-canal recién tiene sentido cuando cada canal es un producto genuinamente distinto y hay capacidad de producción real.
+  </div>
+
+  <h2><span class="num">4</span>Idioma/geografía: dónde está la plata</h2>
+
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Mercado / idioma</th><th>RPM / CPM</th></tr></thead>
+      <tbody>
+        <tr class="row-top"><td><strong>Inglés</strong> (idioma)</td><td class="rpm">~$10,26 CPM</td></tr>
+        <tr><td>Español (idioma)</td><td class="rpm">~$3,00 CPM &nbsp;<span class="note">(3–4x menos)</span></td></tr>
+        <tr><td>Alemán</td><td>~$5,53 CPM</td></tr>
+        <tr><td>🇺🇸 US</td><td>$6,32 RPM</td></tr>
+        <tr><td>🇦🇺 Australia</td><td>$7,67 RPM</td></tr>
+        <tr><td>🇬🇧 UK</td><td>$6,02 RPM</td></tr>
+        <tr><td>🇨🇦 Canadá</td><td>$5,63 RPM</td></tr>
+        <tr><td>🇪🇸 España</td><td>$2,12 RPM</td></tr>
+        <tr><td>🇲🇽 México</td><td>$0,44 RPM</td></tr>
+        <tr><td>🇦🇷 Argentina</td><td>$0,26 RPM</td></tr>
+        <tr class="row-floor"><td><strong>LATAM mediana</strong></td><td>~$0,34 RPM &nbsp;<span class="note">(≈ 10x menos que Tier-1)</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout lever"><span class="tag">➡️ Empezar en inglés</span> La versión en inglés vale <strong>3–4x</strong> la de castellano por el mismo esfuerzo de producción. Castellano = audiencia propia/alcance, no RPM.</div>
+
+  <h2><span class="num">5</span>¿Los videos tienen que ser de +8 min? Sí</h2>
+  <p>Confirmado con fuente primaria (YouTube Help):</p>
+  <ul>
+    <li><strong>Los mid-roll ads solo se habilitan en videos monetizados de 8+ minutos.</strong></li>
+    <li>El ingreso real depende de <strong>cuántos mid-rolls carga el video, no del CPM titular.</strong> ("Transport" rankea RPM #2 con CPM mediocre porque sus videos largos cargan 2,55 avisos/view; "Gadgets/Tech" tiene CPM alto pero RPM bajo por videos cortos.)</li>
+    <li>Un video de <strong>~15 min con 2–3 mid-rolls puede casi duplicar el RPM</strong> de uno de 5 min con solo pre-roll.</li>
+  </ul>
+  <div class="callout lever"><span class="tag">🎯 Palanca #1</span> Apuntar a <strong>10–15 min mínimo</strong>. Es la palanca de ingresos más directa que existe.</div>
+
+  <h2><span class="num">6</span>Cuánto se gana por video</h2>
+  <p class="section-lead">RPM realista para AI/educación en inglés, audiencia Tier-1 (~$8–12 RPM).</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Views del video</th><th>Inglés (RPM ~$10)</th><th>Castellano (RPM ~$2,5)</th></tr></thead>
+      <tbody>
+        <tr><td>10.000</td><td class="rpm">~$80–120</td><td>~$20–30</td></tr>
+        <tr><td>100.000</td><td class="rpm">~$800–1.200</td><td>~$200–300</td></tr>
+        <tr><td>500.000</td><td class="rpm">~$4.000–6.000</td><td>~$1.000–1.500</td></tr>
+        <tr><td>1.000.000</td><td class="rpm">~$8.000–12.000</td><td>~$2.000–3.000</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">(Kids a los mismos views: <strong>/30</strong>. 1M views ≈ $330.)</p>
+
+  <h2><span class="num">7</span>Series/playlists vs individuales · long-form → Shorts</h2>
+  <div class="callout warn"><span class="tag">⚠️ Best-practice, no dato verificado</span> El research no logró verificar cifras duras acá — lo siguiente es práctica de industria, no confirmado.</div>
+  <ul>
+    <li><strong>Series/playlists:</strong> ayudan al <strong>session time</strong> (encadenar reproducciones), que el algoritmo premia. Conviene un <strong>video "pilar" standalone fuerte</strong> (descubrimiento) + <strong>playlists temáticas</strong> (retención). No es "series O individuales" — es individuales <em>organizados en</em> playlists.</li>
+    <li><strong>Long-form → Shorts:</strong> cortar <strong>3–5 Shorts por video largo</strong> como <strong>embudo de suscriptores</strong> (Shorts traccionan alcance, el largo monetiza). El Short no reemplaza al largo: lo alimenta.</li>
+  </ul>
+
+  <hr>
+
+  <h2 style="margin-top:0">Requisitos YouTube Partner Program (2025–2026)</h2>
+  <ul>
+    <li><strong>1.000 suscriptores</strong> + (<strong>4.000 hs de watch time</strong> en 12 meses <strong>O 10M views de Shorts</strong> en 90 días).</li>
+    <li>Tier menor de <strong>500 subs</strong> desbloquea solo fan-funding (no ads).</li>
+  </ul>
+
+  <h2>📌 Recomendación sintetizada</h2>
+  <ol class="path">
+    <li><strong>Canal en inglés</strong>, tema <strong>explicar IA para adultos</strong> (mejor cruce RPM + crecimiento).</li>
+    <li><strong>Videos de 10–15 min</strong> para cargar mid-rolls (la palanca #1 de ingresos).</li>
+    <li><strong>Un canal enfocado</strong>, no red de clones — evita el riesgo "inauthentic/reused".</li>
+    <li>Idioma: <strong>multi-audio en el mismo canal</strong>, no canales separados.</li>
+    <li><strong>Kids solo por branding/alcance</strong>, nunca por AdSense.</li>
+    <li><strong>Playlists</strong> para retención + <strong>3–5 Shorts por video</strong> como embudo.</li>
+  </ol>
+
+  <hr>
+
+  <h2 style="margin-top:0">Advertencias sobre la evidencia</h2>
+  <ul class="fine">
+    <li>YouTube <strong>no publica RPM/CPM oficiales por nicho</strong> → casi todas las cifras por vertical vienen de blogs que se cross-citan. La dirección del ranking es sólida; los números exactos varían ±50%.</li>
+    <li>La excepción de calidad es el estudio <strong>AIR Media-Tech</strong> (YouTube Analytics real), aunque es un MCN con muestra propietaria — leer como "direccional".</li>
+    <li>Con respaldo <strong>primario</strong>: colapso de kids por COPPA, regla de 8 min para mid-rolls, políticas Reused/Inauthentic.</li>
+    <li><strong>5 claims refutados</strong> por cifras infladas (ej. "Educación $14–20 CPM", "Investing $20–40 CPM como #1").</li>
+  </ul>
+
+  <h3>Preguntas abiertas</h3>
+  <ul class="fine">
+    <li>¿Qué % de suscriptores ganados vía Shorts migra al contenido largo monetizable?</li>
+    <li>Tratamiento algorítmico concreto de series/playlists vs standalone.</li>
+    <li>Ejemplos reales y economía de redes multi-canal del mismo tema (se confirmaron riesgos, no ejemplos exitosos).</li>
+    <li>Cómo trata YouTube el contenido AI-generado (synthetic/altered disclosure) y su cruce con "Inauthentic content".</li>
+  </ul>
+
+  <div class="method">
+    <strong>Método:</strong> deep research con fan-out de búsquedas web, extracción de claims y verificación adversarial (3 votos por claim; se descartan los que reciben 2/3 de refutación). 25 fuentes, 113 claims extraídos, 25 verificados → 20 confirmados, 5 refutados.
+  </div>
+
+  <footer>
+    <strong>Fuentes principales:</strong> YouTube Help · AEA/Management Science 2024 "COPPAcalypse?" · AIR Media-Tech · Dynamoi · lenostube · vidIQ · incomefromviews · outlierkit.<br>
+    <a class="backlink" href="../coco-luna/informe-monetizacion.html">← Ver también: informe de monetización de Coco &amp; Luna</a><br>
+    Clomatica — AI Workspace · Documento de contexto interno.
+  </footer>
+
+</div>
+</body>
+</html>
