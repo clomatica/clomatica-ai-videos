@@ -14,7 +14,7 @@ into a **trend + character report**: what topics/situations they post about, ton
 formats, hooks, captions, hashtags, and what the accounts/characters are *like*.
 
 Built for Clomatica: the point is to feed ideation for cozy animal-couple videos
-(see `.claude/context/videos/estilo-videos.md`). Read that file first so the report
+(see `.claude/context/coco-luna/estilo-videos.md`). Read that file first so the report
 speaks to what's actually useful — relatable everyday situations, soft tone, ASMR,
 short one-line captions.
 

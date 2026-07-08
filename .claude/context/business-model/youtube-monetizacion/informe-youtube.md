@@ -48,20 +48,26 @@ El hallazgo más sólido del research (paper peer-reviewed de AEA/Management Sci
 
 ---
 
-## 3) Multi-canal (mismo tema, distintas audiencias): CUIDADO
+## 3) Multi-canal (mismo tema, distintas audiencias)
 
-Segmentar por audiencia/idioma es buen instinto, **pero** choca con dos políticas oficiales de YouTube — y el contenido AI a escala es justo el caso que apuntan:
+**Distinción clave: TEMA ≠ ASSET.** Las políticas de YouTube no atacan que dos canales toquen el *mismo tema* — miles lo hacen sin problema. Atacan la **duplicación del asset** (mismo o casi-mismo archivo, o plantilla clonada sin variación). Las dos políticas relevantes:
 
 - **"Reused content":** repurposing sin aporte original significativo. **Aplica al canal ENTERO** → pueden desmonetizar todo el canal, no un video.
 - **"Inauthentic content"** (renombrada el 15-jul-2025, antes "repetitious"): prohíbe contenido "hecho con plantilla, con poca o nula variación entre videos" y "fácilmente replicable a escala". *"La sustancia de cada video debe variar materialmente."*
 
-**Qué SÍ es seguro vs riesgoso:**
+**Dónde cae cada escenario:**
 
+- ✅ **Mismo tema, video genuinamente distinto** (otro guion, otros ejemplos, otro enfoque/estilo) en otro canal para otra audiencia → **permitido**. No es reused ni inauthentic: es contenido original que casualmente comparte tema. Este es el caso que planteás.
 - ✅ **Traducir/doblar** el mismo video a otro idioma → usar la función **multi-audio de YouTube en UN solo canal** (no canales separados). Es lo que YouTube quiere.
 - ⚠️ **Mismo tema, versión casi idéntica, en canales distintos** → patrón "replicable a escala" = riesgo alto de desmonetización.
-- ✅ **Versiones materialmente distintas** (guion, ejemplos, enfoque realmente diferentes por audiencia) → aceptable, pero es *más trabajo*, no menos.
 
-**Veredicto:** para arrancar, **un canal en inglés** enfocado y bien hecho > red de multi-canales clonados. El multi-canal recién tiene sentido cuando cada canal es un producto genuinamente distinto y hay capacidad de producción real.
+**Entonces la pregunta no es "¿me lo permiten?" (sí) sino "¿conviene?" (economía):**
+
+- Cada canal arranca de **cero**: su propia audiencia, sus propias 4.000 hs de watch time para el YPP, su propio empuje algorítmico. Multi-canal **multiplica el esfuerzo y ralentiza la monetización por canal**.
+- **Único cuidado real:** que no se note "granja de plantilla" (mismo intro, misma estructura, misma voz, solo cambiando el tema). Si cada canal tiene tratamiento/estilo propio de verdad, no hay riesgo.
+- El canal **kids sigue siendo tema aparte** por COPPA — esa restricción es del *público*, no de la política de contenido reused.
+
+**Veredicto:** el multi-canal con versiones genuinamente distintas es **totalmente válido** y es una estrategia real (media companies lo hacen). Pero para *arrancar*, concentrar el esfuerzo en **un canal en inglés** bien hecho llega antes a la monetización que repartirlo entre varios canales desde cero. Escalá a multi-canal cuando el primero ya funcione y tengas capacidad de producción para que cada canal sea un producto propio.
 
 ---
 
@@ -96,6 +102,39 @@ Confirmado con fuente primaria (YouTube Help):
 - **Un video de ~15 min con 2–3 mid-rolls puede casi duplicar el RPM** de uno de 5 min con solo pre-roll.
 
 ➡️ **Apuntar a 10–15 min mínimo.** Es la palanca de ingresos más directa que existe.
+
+---
+
+## 🍰 De dónde sale la plata de un video — las 3 capas
+
+El mid-roll es **solo una palanca** (la más controlable), no la única fuente. La monetización de un video tiene tres capas:
+
+### Capa 1 — Ads (dentro de AdSense)
+El mid-roll es un formato de aviso más. Los formatos:
+
+- **Pre-roll** — antes del video. Corre en **todos** los videos monetizados (incluso los cortos).
+- **Mid-roll** — en el medio. Solo en videos de **8+ min**. Es inventario extra que sumás.
+- **Post-roll** — al final.
+- **Display / overlay / banner** — avisos gráficos.
+- **Skippables, non-skippables, bumpers** — variantes del in-stream.
+
+➡️ Un video corto igual monetiza (pre-roll), pero uno largo **suma mid-rolls** = más avisos por view = más RPM. Por eso la regla de los 8 min.
+
+### Capa 2 — Otros ingresos de YouTube (dentro del YPP, sin marcas externas)
+- **YouTube Premium** — cuando un suscriptor Premium mira tu video, cobrás una parte de su cuota (sin aviso de por medio). Plata "invisible" que se suma sola.
+- **Channel Memberships** — suscripción paga mensual de fans con perks exclusivos.
+- **Super Thanks / Super Chat / Super Stickers** — propinas (Super Thanks en videos normales; Super Chat en vivos).
+- **Shopping** — estante de productos / afiliados integrado al video.
+- **Ad revenue de Shorts** — pool aparte (RPM bajísimo, ver informe de Coco & Luna).
+
+### Capa 3 — Fuera de YouTube (lo más rentable a escala)
+- **Brand deals / sponsorships** — lo más grande para creadores profesionales.
+- **Afiliados** y **productos propios** (cursos, merch, etc.).
+
+### Cómo se relaciona con el RPM que vimos
+El RPM de $8–12 (AI/educación en inglés) **ya incluye pre-roll + mid-roll + Premium mezclados** — es "lo que cobrás por 1.000 views por todo el ad+Premium junto". **Memberships, Super Thanks, shopping y brand deals van POR ENCIMA de ese RPM.** El mid-roll es simplemente el factor que más podés optimizar con una decisión de formato (la duración).
+
+> **Evolución típica:** un canal de educación/tech arranca con el grueso en **ads + Premium**, y a medida que crece la audiencia los **brand deals** terminan siendo la tajada más grande.
 
 ---
 

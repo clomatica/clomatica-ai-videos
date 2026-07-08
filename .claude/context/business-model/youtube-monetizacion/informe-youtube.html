@@ -7,26 +7,26 @@
 <style>
   :root {
     --bg: #f7f2ea; --card: #fffdf9; --ink: #2e2823; --muted: #6f645a; --line: #e6dccd;
-    --brand: #c23b2e; --brand-soft: #f4dcd7; --cacao: #6b4a37; --stone: #9a8d7d;
-    --ok: #5b7d5b; --warn: #b9762e; --danger: #b1503f; --accent-bg: #f3e7dc;
+    --brand: #2f6fb0; --brand-soft: #dbe8f5; --cacao: #6b4a37; --stone: #9a8d7d;
+    --ok: #5b7d5b; --warn: #b9762e; --danger: #c0392b; --accent-bg: #f3e7dc;
     --gold: #c99a2e;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #1c1815; --card: #262019; --ink: #eee6da; --muted: #a89a8a; --line: #3a322a;
-      --brand: #e5685a; --brand-soft: #3d241f; --cacao: #d8b79c; --stone: #8f8272;
-      --ok: #8fb28f; --warn: #d99a52; --danger: #d9836f; --accent-bg: #2e251d; --gold: #d9b45a;
+      --brand: #6aa8e0; --brand-soft: #1e2c3b; --cacao: #d8b79c; --stone: #8f8272;
+      --ok: #8fb28f; --warn: #d99a52; --danger: #e5685a; --accent-bg: #2e251d; --gold: #d9b45a;
     }
   }
   :root[data-theme="dark"] {
     --bg: #1c1815; --card: #262019; --ink: #eee6da; --muted: #a89a8a; --line: #3a322a;
-    --brand: #e5685a; --brand-soft: #3d241f; --cacao: #d8b79c; --stone: #8f8272;
-    --ok: #8fb28f; --warn: #d99a52; --danger: #d9836f; --accent-bg: #2e251d; --gold: #d9b45a;
+    --brand: #6aa8e0; --brand-soft: #1e2c3b; --cacao: #d8b79c; --stone: #8f8272;
+    --ok: #8fb28f; --warn: #d99a52; --danger: #e5685a; --accent-bg: #2e251d; --gold: #d9b45a;
   }
   :root[data-theme="light"] {
     --bg: #f7f2ea; --card: #fffdf9; --ink: #2e2823; --muted: #6f645a; --line: #e6dccd;
-    --brand: #c23b2e; --brand-soft: #f4dcd7; --cacao: #6b4a37; --stone: #9a8d7d;
-    --ok: #5b7d5b; --warn: #b9762e; --danger: #b1503f; --accent-bg: #f3e7dc; --gold: #c99a2e;
+    --brand: #2f6fb0; --brand-soft: #dbe8f5; --cacao: #6b4a37; --stone: #9a8d7d;
+    --ok: #5b7d5b; --warn: #b9762e; --danger: #c0392b; --accent-bg: #f3e7dc; --gold: #c99a2e;
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--ink);
@@ -143,23 +143,32 @@
     "El mismo video para nenes de 5" es justo la <strong>peor casilla de monetización</strong>. Bajo COPPA no se pueden servir avisos personalizados (solo contextuales) y el techo <strong>no se puede subir</strong> — solo compensar con volumen masivo. Kids sirve para alcance/branding, no para AdSense.
   </div>
 
-  <h2><span class="num">3</span>Multi-canal (mismo tema, distintas audiencias): cuidado</h2>
-  <p class="section-lead">Segmentar es buen instinto, pero el contenido AI a escala es justo el caso que apuntan dos políticas oficiales:</p>
+  <h2><span class="num">3</span>Multi-canal (mismo tema, distintas audiencias)</h2>
+  <div class="callout">
+    <span class="tag">🔑 Distinción clave: TEMA ≠ ASSET</span>
+    Las políticas de YouTube <strong>no</strong> atacan que dos canales toquen el <em>mismo tema</em> — miles lo hacen sin problema. Atacan la <strong>duplicación del asset</strong> (mismo o casi-mismo archivo, o plantilla clonada sin variación).
+  </div>
 
   <div class="flags">
     <div class="flag"><span class="ic">📋</span><div><strong>"Reused content":</strong> repurposing sin aporte original significativo. <strong>Aplica al canal ENTERO</strong> → pueden desmonetizar todo el canal, no un video.</div></div>
     <div class="flag"><span class="ic">🤖</span><div><strong>"Inauthentic content"</strong> (renombrada 15-jul-2025): prohíbe contenido "con plantilla, poca o nula variación entre videos" y "fácilmente replicable a escala". La sustancia de cada video debe variar materialmente.</div></div>
   </div>
 
+  <h3>Dónde cae cada escenario</h3>
   <div class="flags">
+    <div class="flag"><span class="ic">✅</span><div><strong>Mismo tema, video genuinamente distinto</strong> (otro guion, ejemplos, enfoque/estilo) en otro canal para otra audiencia → <strong>permitido</strong>. Es contenido original que casualmente comparte tema. <em>Este es el caso que planteás.</em></div></div>
     <div class="flag"><span class="ic">✅</span><div><strong>Traducir/doblar</strong> el mismo video → función <strong>multi-audio en UN solo canal</strong> (no canales separados). Es lo que YouTube quiere.</div></div>
     <div class="flag"><span class="ic">⚠️</span><div><strong>Mismo tema casi idéntico en canales distintos</strong> → patrón "replicable a escala" = riesgo alto de desmonetización.</div></div>
-    <div class="flag"><span class="ic">✅</span><div><strong>Versiones materialmente distintas</strong> por audiencia → aceptable, pero es <em>más</em> trabajo, no menos.</div></div>
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">La pregunta no es "¿me lo permiten?" (sí) sino "¿conviene?" (economía)</span>
+    Cada canal arranca de <strong>cero</strong>: su propia audiencia, sus propias 4.000 hs de watch time para el YPP, su propio empuje algorítmico. Multi-canal <strong>multiplica el esfuerzo y ralentiza la monetización por canal</strong>. Único cuidado real: que no se note "granja de plantilla" (mismo intro/estructura/voz, solo cambiando el tema). El canal <strong>kids sigue aparte por COPPA</strong> — esa restricción es del público, no de la política reused.
   </div>
 
   <div class="callout lever">
     <span class="tag">Veredicto</span>
-    Para arrancar, <strong>un canal en inglés</strong> enfocado y bien hecho &gt; red de multi-canales clonados. El multi-canal recién tiene sentido cuando cada canal es un producto genuinamente distinto y hay capacidad de producción real.
+    El multi-canal con versiones <strong>genuinamente distintas es totalmente válido</strong> y lo usan media companies reales. Pero para <em>arrancar</em>, concentrar en <strong>un canal en inglés</strong> bien hecho llega antes a la monetización que repartir el esfuerzo entre varios canales desde cero. Escalá a multi-canal cuando el primero ya funcione.
   </div>
 
   <h2><span class="num">4</span>Idioma/geografía: dónde está la plata</h2>
@@ -192,6 +201,38 @@
     <li>Un video de <strong>~15 min con 2–3 mid-rolls puede casi duplicar el RPM</strong> de uno de 5 min con solo pre-roll.</li>
   </ul>
   <div class="callout lever"><span class="tag">🎯 Palanca #1</span> Apuntar a <strong>10–15 min mínimo</strong>. Es la palanca de ingresos más directa que existe.</div>
+
+  <h2>🍰 De dónde sale la plata de un video — las 3 capas</h2>
+  <p class="section-lead">El mid-roll es <strong>solo una palanca</strong> (la más controlable), no la única fuente. La monetización de un video tiene tres capas.</p>
+
+  <h3>Capa 1 — Ads (dentro de AdSense)</h3>
+  <p>El mid-roll es un formato de aviso más:</p>
+  <div class="flags">
+    <div class="flag"><span class="ic">▶️</span><div><strong>Pre-roll</strong> — antes del video. Corre en <strong>todos</strong> los videos monetizados (incluso los cortos).</div></div>
+    <div class="flag"><span class="ic">⏸️</span><div><strong>Mid-roll</strong> — en el medio. Solo en videos de <strong>8+ min</strong>. Inventario extra que sumás.</div></div>
+    <div class="flag"><span class="ic">⏹️</span><div><strong>Post-roll</strong> — al final. <strong>Display / overlay / banner</strong> — avisos gráficos. <strong>Skippables, non-skippables, bumpers</strong> — variantes del in-stream.</div></div>
+  </div>
+  <p class="note">➡️ Un video corto igual monetiza (pre-roll), pero uno largo <strong>suma mid-rolls</strong> = más avisos por view = más RPM. Por eso la regla de los 8 min.</p>
+
+  <h3>Capa 2 — Otros ingresos de YouTube (dentro del YPP, sin marcas externas)</h3>
+  <div class="flags">
+    <div class="flag"><span class="ic">🎬</span><div><strong>YouTube Premium</strong> — cuando un suscriptor Premium mira tu video, cobrás una parte de su cuota (sin aviso). Plata "invisible" que se suma sola.</div></div>
+    <div class="flag"><span class="ic">⭐</span><div><strong>Channel Memberships</strong> — suscripción paga mensual de fans con perks exclusivos.</div></div>
+    <div class="flag"><span class="ic">💸</span><div><strong>Super Thanks / Super Chat / Super Stickers</strong> — propinas (Super Thanks en videos normales; Super Chat en vivos).</div></div>
+    <div class="flag"><span class="ic">🛍️</span><div><strong>Shopping</strong> — estante de productos / afiliados integrado. <strong>Ad revenue de Shorts</strong> — pool aparte (RPM bajísimo).</div></div>
+  </div>
+
+  <h3>Capa 3 — Fuera de YouTube (lo más rentable a escala)</h3>
+  <div class="flags">
+    <div class="flag"><span class="ic">🤝</span><div><strong>Brand deals / sponsorships</strong> — lo más grande para creadores profesionales.</div></div>
+    <div class="flag"><span class="ic">🔗</span><div><strong>Afiliados</strong> y <strong>productos propios</strong> (cursos, merch, etc.).</div></div>
+  </div>
+
+  <div class="callout lever">
+    <span class="tag">Cómo se relaciona con el RPM que vimos</span>
+    El RPM de $8–12 (AI/educación en inglés) <strong>ya incluye pre-roll + mid-roll + Premium mezclados</strong>. <strong>Memberships, Super Thanks, shopping y brand deals van POR ENCIMA de ese RPM.</strong> El mid-roll es el factor que más podés optimizar con una decisión de formato (la duración).<br><br>
+    <strong>Evolución típica:</strong> un canal de educación/tech arranca con el grueso en <strong>ads + Premium</strong>, y al crecer la audiencia los <strong>brand deals</strong> terminan siendo la tajada más grande.
+  </div>
 
   <h2><span class="num">6</span>Cuánto se gana por video</h2>
   <p class="section-lead">RPM realista para AI/educación en inglés, audiencia Tier-1 (~$8–12 RPM).</p>
@@ -257,7 +298,7 @@
 
   <footer>
     <strong>Fuentes principales:</strong> YouTube Help · AEA/Management Science 2024 "COPPAcalypse?" · AIR Media-Tech · Dynamoi · lenostube · vidIQ · incomefromviews · outlierkit.<br>
-    <a class="backlink" href="../coco-luna/informe-monetizacion.html">← Ver también: informe de monetización de Coco &amp; Luna</a><br>
+    <a class="backlink" href="../../coco-luna/monetizacion/informe-monetizacion.html">← Ver también: informe de monetización de Coco &amp; Luna</a><br>
     Clomatica — AI Workspace · Documento de contexto interno.
   </footer>
 

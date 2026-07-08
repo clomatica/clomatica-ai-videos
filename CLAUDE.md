@@ -65,10 +65,12 @@ More departments appear here as `/setup` personalizes the workspace and skills g
 ├── skills/                 # Your skills, grouped in folders by department
 │   └── workspace/          # The base skills that manage the workspace itself
 │       └── contact-olympus/references/olympus-workspace.json  # Workspace identity — used by /contact-olympus and the daily signal
-├── context/company/        # Company profile and context
-├── context/videos/         # Estilo de los videos y personajes (Coco & Luna)
-├── context/business-model/ # Cómo monetiza el contenido
-│   ├── coco-luna/          # Monetización del estilo Coco & Luna (plataformas + modelos)
+├── context/company/        # Company profile and context (general)
+├── context/coco-luna/      # PRODUCTO Coco & Luna: estilo, personajes, ideas y su monetización
+│   ├── estilo-videos.md    # Estilo de los videos
+│   ├── personajes/         # Coco y Luna
+│   └── monetizacion/       # Cómo monetiza el estilo Coco & Luna (plataformas + modelos)
+├── context/business-model/ # Estrategias de negocio generales (no específicas de un producto)
 │   └── youtube-monetizacion/ # Estrategia YouTube long-form (RPM por vertical)
 ├── logs/                   # Learning and observation logs
 ├── hooks/phone-home.py     # Once-a-day "workspace is alive" signal to your Olympus team
