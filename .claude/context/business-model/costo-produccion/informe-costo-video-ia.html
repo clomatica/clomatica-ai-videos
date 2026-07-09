@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Costo de producción — 1 video de IA/día (Claude ↔ Higgsfield)</title>
+<style>
+  :root {
+    --bg: #f7f2ea; --card: #fffdf9; --ink: #2e2823; --muted: #6f645a; --line: #e6dccd;
+    --brand: #2f6fb0; --brand-soft: #dbe8f5; --cacao: #6b4a37; --stone: #9a8d7d;
+    --ok: #5b7d5b; --warn: #b9762e; --danger: #c0392b; --accent-bg: #f3e7dc;
+    --gold: #c99a2e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1815; --card: #262019; --ink: #eee6da; --muted: #a89a8a; --line: #3a322a;
+      --brand: #6aa8e0; --brand-soft: #1e2c3b; --cacao: #d8b79c; --stone: #8f8272;
+      --ok: #8fb28f; --warn: #d99a52; --danger: #e5685a; --accent-bg: #2e251d; --gold: #d9b45a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1c1815; --card: #262019; --ink: #eee6da; --muted: #a89a8a; --line: #3a322a;
+    --brand: #6aa8e0; --brand-soft: #1e2c3b; --cacao: #d8b79c; --stone: #8f8272;
+    --ok: #8fb28f; --warn: #d99a52; --danger: #e5685a; --accent-bg: #2e251d; --gold: #d9b45a;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f2ea; --card: #fffdf9; --ink: #2e2823; --muted: #6f645a; --line: #e6dccd;
+    --brand: #2f6fb0; --brand-soft: #dbe8f5; --cacao: #6b4a37; --stone: #9a8d7d;
+    --ok: #5b7d5b; --warn: #b9762e; --danger: #c0392b; --accent-bg: #f3e7dc; --gold: #c99a2e;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 48px 24px 96px; }
+  header.hero { border-bottom: 1px solid var(--line); padding-bottom: 28px; margin-bottom: 8px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 12px; color: var(--brand); font-weight: 700; margin: 0 0 10px; }
+  h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); font-size: 15px; margin: 0; }
+  .tldr { background: var(--brand-soft); border-left: 4px solid var(--brand); border-radius: 12px; padding: 18px 20px; margin: 32px 0; font-size: 15.5px; }
+  .tldr strong { color: var(--brand); }
+  h2 { font-size: 22px; margin: 52px 0 6px; letter-spacing: -0.01em; }
+  h2 .num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--brand); color: #fff; font-size: 15px; font-weight: 700; margin-right: 10px; vertical-align: middle; }
+  h3 { font-size: 16px; margin: 28px 0 8px; color: var(--cacao); }
+  p { margin: 12px 0; }
+  a { color: var(--brand); }
+  .section-lead { color: var(--muted); margin-top: 6px; }
+  .note { font-size: 13px; color: var(--muted); }
+  .table-scroll { overflow-x: auto; margin: 22px 0; border-radius: 12px; border: 1px solid var(--line); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; background: var(--card); }
+  th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { background: var(--accent-bg); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+  tbody tr:last-child td { border-bottom: none; }
+  .rpm { font-weight: 700; color: var(--brand); white-space: nowrap; }
+  .cost { font-weight: 700; color: var(--warn); white-space: nowrap; }
+  .row-top { background: linear-gradient(90deg, var(--brand-soft), transparent); }
+  .row-total td { background: var(--accent-bg); font-weight: 700; }
+  .row-floor td { color: var(--danger); }
+  .conf { font-size: 12px; color: var(--muted); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 22px 0; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+  .stat .big { font-size: 26px; font-weight: 800; color: var(--brand); line-height: 1.1; }
+  .stat .big.warn { color: var(--warn); }
+  .stat .big.danger { color: var(--danger); }
+  .stat .lbl { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .callout { border-radius: 12px; padding: 16px 18px; margin: 22px 0; font-size: 14.5px; background: var(--card); border: 1px solid var(--line); }
+  .callout.lever { border-left: 4px solid var(--ok); }
+  .callout.warn { border-left: 4px solid var(--warn); }
+  .callout.danger { border-left: 4px solid var(--danger); }
+  .callout .tag { font-weight: 700; display: block; margin-bottom: 4px; }
+  .callout.lever .tag { color: var(--ok); }
+  .callout.warn .tag { color: var(--warn); }
+  .callout.danger .tag { color: var(--danger); }
+  .flags { display: grid; gap: 8px; margin: 16px 0; }
+  .flag { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+  .flag .ic { font-size: 16px; line-height: 1.4; }
+  ul { padding-left: 20px; } li { margin: 7px 0; }
+  ol.path { counter-reset: step; list-style: none; padding: 0; margin: 20px 0; }
+  ol.path li { counter-increment: step; position: relative; padding: 14px 16px 14px 56px; margin: 10px 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+  ol.path li::before { content: counter(step); position: absolute; left: 14px; top: 14px; width: 28px; height: 28px; border-radius: 50%; background: var(--brand); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 48px 0; }
+  .fine { font-size: 13.5px; color: var(--muted); } .fine li { margin: 5px 0; }
+  footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--stone); }
+  .method { background: var(--accent-bg); border-radius: 12px; padding: 14px 18px; font-size: 13px; color: var(--muted); margin-top: 20px; }
+  .backlink { display:inline-block; margin-top: 10px; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Clomatica · Business Model · Costos de producción</p>
+    <h1>Costo de 1 video de IA de 9–10 min por día</h1>
+    <p class="sub">Conexión Claude ↔ Higgsfield → YouTube. Escenario "100% video IA continuo". · Act. 2026-07-08</p>
+  </header>
+
+  <div class="tldr">
+    <strong>TL;DR:</strong> hacer <strong>1 video de 10 min 100% generado por IA (Higgsfield) por día</strong> cuesta <strong>~$1.300–2.400/mes</strong> (~$43–80/video), más ~3–6 meses de burn a $0 de ingreso hasta cruzar el umbral del YPP. Es el camino <strong>más caro</strong> y va <strong>en contra del formato que el informe de YouTube recomienda</strong> (faceless con voz en off + visuales de apoyo). El formato narrado con IA de acento cuesta <strong>~$400–700/mes</strong> por el mismo resultado monetizable.
+  </div>
+
+  <div class="callout">
+    <span class="tag">📌 Contexto — qué pide la estrategia</span>
+    Del <a href="../youtube-monetizacion/informe-youtube.html">informe de YouTube long-form</a>: canal en <strong>inglés</strong>, <strong>explicar IA para adultos</strong>, videos de <strong>10–15 min</strong>, <strong>un canal enfocado</strong>, con <strong>doblaje bilingüe (multi-audio)</strong> como diferencial. El formato que monetiza (LEMMiNO, Kurzgesagt, Anton Petrov) es <strong>faceless: voz en off + visuales de apoyo</strong> — no footage cinematográfico continuo.
+  </div>
+
+  <h2><span class="num">1</span>La conexión Claude ↔ Higgsfield</h2>
+  <div class="flags">
+    <div class="flag"><span class="ic">🔌</span><div>Higgsfield tiene <strong>API pública + SDK de Python oficial</strong> → Claude puede orquestar todo: guion EN → prompts de cada clip → generación → ensamblado → subida a YouTube.</div></div>
+    <div class="flag"><span class="ic">💳</span><div><strong>La API solo está en el plan Studio/Ultra</strong> (el más caro). Los planes baratos ($15–39/mes) no dan API. La "conexión" no es un producto aparte: es la suscripción base.</div></div>
+    <div class="flag"><span class="ic">🛠️</span><div>Armar el pipeline es <strong>costo único</strong> (unos días con Claude Code, básicamente tiempo propio). No es una licencia recurrente.</div></div>
+    <div class="flag"><span class="ic">⏱️</span><div><strong>Límite técnico:</strong> cada clip dura <strong>máx. 16 s</strong>. Un video de 10 min (600 s) = <strong>~40–75 clips</strong>, generando <strong>3–5× por descarte</strong>. Ese es el driver del costo.</div></div>
+  </div>
+
+  <h2><span class="num">2</span>Costo mensual — 10 min/día, 100% video IA</h2>
+  <p class="section-lead">30 videos/mes. El driver dominante es siempre Higgsfield.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Ítem</th><th>Costo/mes (USD)</th><th>Nota</th></tr>
+      </thead>
+      <tbody>
+        <tr class="row-top"><td><strong>Higgsfield — generación (modelo económico, tipo Kling)</strong></td><td class="cost">$1.000 – $1.800</td><td>El grueso. ~50 clips útiles/video × iteración × 30. Plan Ultra + top-ups</td></tr>
+        <tr class="row-floor"><td>Higgsfield — generación premium (Veo 3 / Sora 2)</td><td>$10.000 – $20.000+</td><td>Inviable a diario — descartado</td></tr>
+        <tr><td>Claude API (guion EN + ~50 prompts/video + orquestación + versión ES)</td><td class="cost">$50 – $250</td><td>Barato al lado de Higgsfield (Sonnet para prompts, Opus para guion)</td></tr>
+        <tr><td>Voz en off TTS <strong>EN + ES</strong> (multi-audio, ~600 min/mes)</td><td class="cost">$100 – $200</td><td>El formato faceless <strong>exige</strong> narración. ElevenLabs Pro/Scale</td></tr>
+        <tr><td>Música/SFX + herramienta de ensamblado</td><td class="cost">$15 – $40</td><td>Epidemic Sound + ffmpeg/CapCut</td></tr>
+        <tr class="row-total"><td>TOTAL viable</td><td class="cost">≈ $1.300 – $2.400 / mes</td><td>~$43 – $80 por video</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">Costos que no aparecen en la tabla pero son reales</span>
+    <strong>Ensamblado diario</strong> de ~50 clips + narración + subtítulos → trabajo humano o desarrollo de automatización (costo en tiempo, no en licencia). <strong>Build inicial</strong> de la integración Claude ↔ API ↔ YouTube (costo único).
+  </div>
+
+  <h2><span class="num">3</span>Cruce con la monetización</h2>
+  <p class="section-lead">Con RPM de IA/educación en inglés Tier-1 ≈ $8–12 (<a href="../youtube-monetizacion/informe-youtube.html">informe YouTube</a>).</p>
+
+  <div class="cards">
+    <div class="stat"><div class="big warn">150k–225k</div><div class="lbl">views/mes totales para llegar al break-even (~$1.800/mes)</div></div>
+    <div class="stat"><div class="big danger">$0</div><div class="lbl">ingreso durante ~3–6 meses hasta cumplir el YPP (1.000 subs + 4.000 hs)</div></div>
+    <div class="stat"><div class="big warn">$4k–14k</div><div class="lbl">runway total estimado antes de que la monetización sostenga el costo</div></div>
+  </div>
+
+  <div class="callout lever">
+    <span class="tag">🌎 El bilingüe juega a favor del video IA</span>
+    Los clips <strong>no tienen idioma</strong> → el mismo footage sirve EN y ES (solo se re-dobla la narración). La imagen se produce una vez y se exprime en los dos idiomas — el diferencial del informe.
+  </div>
+
+  <h2><span class="num">4</span>Tensión con el informe + comparación de formatos</h2>
+  <p>Si en vez de "100% continuo" se usa Higgsfield para <strong>B-roll de acento dentro de un explainer narrado</strong> (lo que hacen los benchmarks del informe), el ítem Higgsfield cae de ~$1.500 a <strong>~$150–400/mes</strong>.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Formato</th><th>Higgsfield/mes</th><th>Total/mes</th><th>Alineado con el informe</th><th>Riesgo "Inauthentic"</th></tr>
+      </thead>
+      <tbody>
+        <tr class="row-floor"><td><strong>100% video IA continuo</strong> (pedido)</td><td>$1.000–1.800</td><td class="cost">$1.300–2.400</td><td>No (el informe pide narrado)</td><td>Mayor (plantilla replicable)</td></tr>
+        <tr class="row-top"><td><strong>Narrado + IA de acento</strong> (informe)</td><td>$150–400</td><td class="rpm">$400–700</td><td>Sí</td><td>Menor</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h2 style="margin-top:0">Veredicto</h2>
+  <div class="callout danger">
+    <span class="tag">100% IA continuo (lo pedido)</span>
+    Técnicamente posible vía API Studio, <strong>~$1.300–2.400/mes</strong> + 3–6 meses de burn. Caro y en contra del propio informe.
+  </div>
+  <div class="callout lever">
+    <span class="tag">✅ Narrado + IA de acento (recomendado)</span>
+    <strong>~$400–700/mes</strong>, formato que monetiza, footage reusable EN/ES. Mismo resultado, un cuarto del costo.
+  </div>
+
+  <h2>Supuestos y método</h2>
+  <ul class="fine">
+    <li>30 videos/mes, 10 min c/u. ~50 clips útiles/video (clips de 10–12 s por coherencia; máx. técnico 16 s).</li>
+    <li>Iteración 3–5× ya incorporada en el costo efectivo por clip útil (Kling ~$0,61–1,03 en plan; premium $3,36–9,33).</li>
+    <li>Higgsfield: plan Ultra base ($99–149/mes) + top-ups (~$5/100 créditos, expiran a 90 días).</li>
+    <li>Claude API y TTS son estimaciones de orden; el driver dominante del costo es siempre Higgsfield.</li>
+    <li>Precios verificados a 2026-07; varían ±50% entre fuentes y updates.</li>
+  </ul>
+
+  <div class="method">
+    <strong>Fuentes de precio:</strong> Higgsfield Pricing (higgsfield.ai/pricing) · Higgsfield Cloud API (cloud.higgsfield.ai) · SDK Python (github.com/higgsfield-ai/higgsfield-client) · Análisis de precios Higgsfield 2026 (Scopeful).
+  </div>
+
+  <footer>
+    <strong>Informes relacionados:</strong>
+    <a class="backlink" href="../youtube-monetizacion/informe-youtube.html">← YouTube long-form: RPM por vertical + estrategia</a><br>
+    Clomatica — AI Workspace · Documento de contexto interno.
+  </footer>
+
+</div>
+</body>
+</html>

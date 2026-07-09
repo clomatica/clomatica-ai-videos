@@ -1,51 +1,57 @@
-# Ideas Seed — Coco & Luna
+# Ideas Seed — Canales de Educación
 
-_Banco de ideas modelo para arrancar videos. Cada una sigue el formato de [estilo-videos.md](estilo-videos.md): **situación de 1 línea (con el texto en pantalla)** + **caption**. Derivadas del análisis de referentes del 2026-07-03 (ver `results/analyze-profiles/reporte-20260703.md`)._
+_Banco de ideas para arrancar videos. Cada una trae **título + hook (primeros 10s) + esqueleto de guion**. Seguí el manual de [estilo-videos.md](estilo-videos.md) para desarrollarlas: hook fuerte, capítulos con open loops, empaque (título+thumbnail), y versión doblada._
 
-Cómo usarlas: elegí una seed, generá el prompt de Flow siguiendo la estructura de estilo-videos.md, y ajustá. La clave está en que **la frase se sienta "somos nosotros"** — que la gente quiera etiquetar a su pareja.
-
----
-
-## 1. La que se cuelga a dormir (patrón meetquack, el más viral)
-- **Situación / texto en pantalla:** _"dije 'me voy a dormir'. traduje: nos vamos a dormir los dos."_
-- **Escena:** Luna arrastra suavemente a Coco de la pata hacia la cama; Coco va sin resistirse.
-- **Caption:** No existe el "yo" a la hora de dormir 🐾 etiquetá a tu media naranja · #couple #relatable #cozy #pareja #ternura
-
-## 2. El mate de la mañana (motivo bebida caliente, top del nicho)
-- **Situación / texto en pantalla:** _"el mate no se ceba hasta que los dos abren los ojos."_
-- **Escena:** Coco espera con la pava; Luna todavía enroscada. Vapor subiendo. Luz dorada.
-- **Caption:** el ritual no se rompe ☕ #mate #goodmorning #couple #cozy #relatable
-
-## 3. Se durmió arriba mío (el ejemplo original del estilo)
-- **Situación / texto en pantalla:** _"plan cancelado: se durmió arriba mío."_
-- **Escena:** Luna dormida sobre el pecho de Coco en el sillón; Coco quieto para no despertarla.
-- **Caption:** no me puedo mover y no me quiero mover 🥱 #siesta #couple #relatable #domingo
-
-## 4. El trueno (dinámica dependiente/ancla)
-- **Situación / texto en pantalla:** _"se asustó con el trueno. yo ya tenía la pata lista."_
-- **Escena:** relámpago afuera, lluvia sobre el vidrio; Luna se esconde en Coco, que ya la estaba abrazando.
-- **Caption:** para eso estoy 🌧️ #lluvia #couple #cozy #relatable #ternura
-
-## 5. Volvió con las dos tazas
-- **Situación / texto en pantalla:** _"dijo 'voy a la cocina' y volvió con las dos tazas. obvio."_
-- **Escena:** Coco vuelve del "offscreen" con dos tazas de cerámica; Luna sonríe desde el sillón.
-- **Caption:** nunca uno solo 🍵 #couple #cotidiano #relatable #pareja
-
-## 6. Domingo de no hacer nada
-- **Situación / texto en pantalla:** _"domingo: el día que inventamos para no hacer nada, juntos."_
-- **Escena:** los dos tirados en la cama de lino, luz difusa, sin apuro.
-- **Caption:** el mejor plan es este 🛏️ #domingo #couple #cozy #relatable #descanso
-
-## 7. Ola de calor (situación estacional, la usaron mallow/toshka)
-- **Situación / texto en pantalla:** _"ola de calor: un ventilador, dos perros, cero ganas de moverse."_
-- **Escena:** los dos desparramados frente a un ventilador, derretidos de calor pero pegados.
-- **Caption:** juntos hasta con 35 grados 🥵 #verano #couple #relatable #cozy
-
-## 8. Good morning (formato simple repetible, patrón nebelschaf)
-- **Situación / texto en pantalla:** _"good morning = primero el mate, después el mundo."_
-- **Escena:** primer plano de las dos tazas humeando; los dos medio dormidos atrás.
-- **Caption:** el orden de las cosas ☕ #goodmorning #mate #couple #cozy #relatable
+Cómo usarlas: elegí una seed, pedí "desarrollá esta como video" y se genera guion completo + empaque + doblaje. Al terminar videos que funcionen, agregá la seed acá.
 
 ---
 
-_Al crear videos nuevos que funcionen bien, agregá la seed acá para no perderla. Las que peguen mucho, marcalas para repetir la fórmula._
+## 🏛️ Historia y Curiosidades
+
+### H1 — "Por qué Roma no cayó cuando todos creen"
+- **Hook:** "El Imperio Romano no se derrumbó en el 476. La mitad siguió vivo mil años más — y casi nadie lo cuenta."
+- **Esqueleto:** el mito del 476 → qué pasó realmente en Occidente → el Imperio de Oriente (Bizancio) sigue → 1453, la verdadera caída → por qué olvidamos esa mitad.
+
+### H2 — "La ciudad que desapareció en una noche"
+- **Hook:** "Una mañana tenía 20.000 habitantes. A la mañana siguiente, no quedaba nadie. Y tardamos siglos en encontrarla."
+- **Esqueleto:** presentar la ciudad → la vida antes → el evento (open loop: ¿qué pasó?) → el descubrimiento moderno → qué nos enseñó.
+
+### H3 — "El invento más importante que nadie recuerda"
+- **Hook:** "Sin este objeto no existirían los libros, internet ni vos leyendo esto. Y no es la imprenta."
+- **Esqueleto:** el objeto olvidado → mundo antes de él → cómo lo cambió todo → por qué no lo recordamos.
+
+---
+
+## 🔭 Ciencia y Espacio
+
+### C1 — "Qué verías si cayeras en un agujero negro"
+- **Hook:** "Si cruzaras el borde de un agujero negro, no sentirías nada raro. El problema empieza un segundo después."
+- **Esqueleto:** qué es el horizonte de sucesos → el viaje segundo a segundo → espaguetificación → qué ve alguien desde afuera (dilatación temporal) → lo que aún no sabemos.
+
+### C2 — "Cómo tu cerebro inventa la realidad que ves"
+- **Hook:** "Nunca viste el mundo real. Lo que ves es una simulación que tu cerebro arma con medio segundo de retraso."
+- **Esqueleto:** la luz entra → el cerebro procesa y predice → el punto ciego que no notás → ilusiones que lo prueban → qué significa para la "realidad".
+
+### C3 — "Por qué el tiempo pasa más lento de lo que creés"
+- **Hook:** "Tu cabeza envejece más rápido que tus pies. No es una metáfora — se puede medir."
+- **Esqueleto:** relatividad simple → gravedad y tiempo → el experimento real → GPS depende de esto → implicancias cotidianas.
+
+---
+
+## 🧠 Psicología y Desarrollo
+
+### P1 — "Por qué postergás lo que más querés hacer"
+- **Hook:** "No procrastinás por vago. Procrastinás justo con lo que más te importa — y hay una razón concreta."
+- **Esqueleto:** el mito de la pereza → la procrastinación como miedo/emoción → qué pasa en el cerebro → la trampa del "cuando tenga ganas" → la salida basada en evidencia.
+
+### P2 — "Por qué extrañás a gente que te hizo mal"
+- **Hook:** "Extrañar a alguien que te lastimó no es debilidad. Es química — y entenderla te libera."
+- **Esqueleto:** la paradoja → apego y recompensa intermitente → por qué el cerebro se engancha → cómo se corta el ciclo → cierre empático (+ nota: no es terapia).
+
+### P3 — "La regla estoica para no sufrir por lo que no controlás"
+- **Hook:** "Hace 2000 años, un esclavo y un emperador llegaron a la misma idea sobre el sufrimiento. Y funciona."
+- **Esqueleto:** la dicotomía del control → Epicteto y Marco Aurelio → aplicarla hoy (ejemplos cotidianos) → los límites de la idea → práctica concreta.
+
+---
+
+_Al crear videos nuevos que rindan, agregá la seed y marcá las que peguen para repetir la fórmula._

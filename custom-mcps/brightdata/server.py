@@ -73,6 +73,11 @@ DATASETS = {
         "discover_by": "profile_url",
         "url_tmpl": "https://www.tiktok.com/@{handle}",
     },
+    "youtube": {
+        "dataset_id": "gd_lk56epmy2i5g7lzu0k",
+        "discover_by": "url",
+        "url_tmpl": "https://www.youtube.com/@{handle}",
+    },
 }
 
 mcp = FastMCP("brightdata")
@@ -122,7 +127,7 @@ def _trigger(platform: str, urls: list[str], num: int) -> str:
     return snapshot_id
 
 
-def _wait_ready(snapshot_id: str, timeout: int = 900, interval: int = 12) -> None:
+def _wait_ready(snapshot_id: str, timeout: int = 1800, interval: int = 15) -> None:
     deadline = time.time() + timeout
     with _client() as c:
         while time.time() < deadline:
@@ -162,14 +167,14 @@ def _summarize(records: list, platform: str) -> str:
     for rec in records:
         if not isinstance(rec, dict):
             continue
-        owner = str(_first(rec, "profile_name", "user_posted", "account", "channel", default="?"))
+        owner = str(_first(rec, "profile_name", "user_posted", "youtuber", "account", "channel", default="?"))
         by_profile.setdefault(owner, []).append(rec)
 
     for owner, posts in by_profile.items():
         lines.append(f"\n### {owner}  ({len(posts)} posts)")
         for rec in posts:
             date = str(_first(rec, "date_posted", "create_time", "timestamp", default="?"))[:10]
-            caption = str(_first(rec, "caption", "description", "post_content", default="")).replace("\n", " ")
+            caption = str(_first(rec, "title", "caption", "description", "post_content", default="")).replace("\n", " ")
             if len(caption) > 160:
                 caption = caption[:157] + "..."
             likes = _first(rec, "likes", "num_likes", "digg_count", default="?")
